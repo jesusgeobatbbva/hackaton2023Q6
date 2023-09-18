@@ -5,6 +5,8 @@ Ingresa tu ID:
 (Validacion de existencia del usuario)
 
 Si existe:
+(Saldo)
+
 1- Consultar Saldo
 2- Realizar deposito
 3- Realizar retiro
