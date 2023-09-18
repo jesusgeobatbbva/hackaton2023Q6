@@ -1,12 +1,18 @@
-Bienvenido al Simulador de Sistema Bancario
+Bienvenido al Simulador de Sistema Bancario del Equipo 6
 
+Ingresa tu ID:
+
+(Validacion de existencia del usuario)
+
+Si existe:
 1- Consultar Saldo
 2- Realizar deposito
 3- Realizar retiro
 4- Transferir a otras cuentas
 5- Consultar transferencias
+6- Cambiar de Cuenta
 
-
+Desglose:
 1- Consultar Saldo
 	1.1- Ingresa ID Cuenta
 	(Me devuelve el nombre y saldo)
@@ -24,3 +30,6 @@ Bienvenido al Simulador de Sistema Bancario
 	4.3 - Ingresa el ID Receptor
 5- Consultar transferencias
 	5.1- Ingresa ID Cuenta
+
+No existe: 
+‘El ID del Usuario No es Válido’	
