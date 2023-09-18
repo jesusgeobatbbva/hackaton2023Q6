@@ -2,7 +2,7 @@
 import sqlite3
 from datetime import datetime
 # Conectar a la base de datos
-conn = sqlite3.connect('Base.db')
+conn = sqlite3.connect('BBVA.db')
 
 #La conexion de la base de datos se almacena en 'conn'
 cursor = conn.cursor()
@@ -11,21 +11,14 @@ cursor = conn.cursor()
 #Dentro de la función, se ejecuta una consulta SQL que busca el saldo de una cuenta en la tabla CuentasBancarias 
 #basándose en el número de cuenta proporcionado. Luego, se recupera el saldo de la cuenta utilizando 
 #cursor.fetchone(). Si se encuentra un saldo, se devuelve; de lo contrario, se devuelve None.
-id_cliente = 'Numero_Cuenta'
-saldo = 'Saldo_cuenta'
-nombre_cliente ='Nombre_cliente'
+id_cliente = 'ID'
+saldo_cliente = 'Saldo'
+nombre_cliente ='NombreCliente'
 
-def consultar_usuario(idcliente):
-    cursor.execute('SELECT'+ nombre_cliente +'FROM CUENTAS WHERE'+ id_cliente +'= ?', (idcliente,))
-   #cursor.fetchone() es un método utilizado en Python para recuperar la siguiente fila (registro) de un conjunto de resultados obtenido después de ejecutar una consulta SQL en una base de datos utilizando un cursor. El nombre del método "fetchone" se utiliza porque su función principal es recuperar una sola fila de los resultados cada vez que se llama.
-    flag = cursor.fetchone()
-    if flag is not None:
-        return True
-    else:
-        return False
+
     
 def consultar_saldo(numero_cuenta):
-    cursor.execute('SELECT Saldo_cuenta FROM CuentasBancarias WHERE Numero_Cuenta = ?', (numero_cuenta,))
+    cursor.execute('SELECT '+ saldo_cliente +' FROM Cuentas WHERE '+id_cliente+' = ?', (numero_cuenta,))
    #cursor.fetchone() es un método utilizado en Python para recuperar la siguiente fila (registro) de un conjunto de resultados obtenido después de ejecutar una consulta SQL en una base de datos utilizando un cursor. El nombre del método "fetchone" se utiliza porque su función principal es recuperar una sola fila de los resultados cada vez que se llama.
     saldo = cursor.fetchone()
     if saldo:
@@ -44,10 +37,10 @@ def hacer_deposito(numero_cuenta, monto):
     if saldo_actual is not None:
         nuevo_saldo = saldo_actual + monto
         #actualizamos la tabla 
-        cursor.execute('UPDATE CuentasBancarias SET Saldo_cuenta = ? WHERE Numero_Cuenta = ?', (nuevo_saldo, numero_cuenta))
+        cursor.execute('UPDATE Cuentas SET '+saldo_cliente+' = ? WHERE '+id_cliente+' = ?', (nuevo_saldo, numero_cuenta))
         
         # Registrar la transacción
-        cursor.execute('INSERT INTO Transacciones (CuentaID, Tipo_Transaccion, Monto_transaccion, FechaHora_transaccion, Descripcion_transaccion) VALUES (?, ?, ?, ?, ?)',
+        cursor.execute('INSERT INTO Transacciones ('+id_cliente,+'CuentaID, Tipo_Transaccion, Monto_transaccion, FechaHora_transaccion, Descripcion_transaccion) VALUES (?, ?, ?, ?, ?)',
                        (numero_cuenta, 'Depósito', monto, datetime.now(), 'Depósito realizado'))
         conn.commit()
 
