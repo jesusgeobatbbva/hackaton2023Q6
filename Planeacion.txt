@@ -1,0 +1,26 @@
+Bienvenido al Simulador de Sistema Bancario
+
+1- Consultar Saldo
+2- Realizar deposito
+3- Realizar retiro
+4- Transferir a otras cuentas
+5- Consultar transferencias
+
+
+1- Consultar Saldo
+	1.1- Ingresa ID Cuenta
+	(Me devuelve el nombre y saldo)
+2- Realizar deposito
+	2.1- Ingresa el ID Destino
+	2.2- Ingresa el monto
+	(Condicion verdadera: saldo = saldo + monto)
+3- Realizar retiro
+	3.1- Ingresa el ID Emisor
+	3.2- Ingresa el monto
+	(Condicion verdadera: saldo = saldo - monto)
+4- Transferir a otras cuentas
+	4.1- Ingresa el ID Emisor
+	4.2- Ingresa el monto
+	4.3 - Ingresa el ID Receptor
+5- Consultar transferencias
+	5.1- Ingresa ID Cuenta
